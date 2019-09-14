@@ -1,15 +1,14 @@
-import XCTest
 @testable import FLineCore
 
-final class FLineCoreTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(FLineCore().text, "Hello, World!")
-    }
+import Quick
+import Nimble
 
-    static var allTests = [
-        ("testExample", testExample),
-    ]
+final class TestSpec: QuickSpec {
+    override func spec() {
+        describe("The Quick unit test") {
+            it("runs") {
+                expect(true).to(equal(true))
+            }
+        }
+    }
 }
