@@ -31,7 +31,9 @@ let package = Package(
     targets: [
         .target(
             name: "FLineCore",
-            dependencies: []),
+            dependencies: [
+                "ReSwift",
+            ]),
         
         .testTarget(
             name: "FLineCoreTests",
