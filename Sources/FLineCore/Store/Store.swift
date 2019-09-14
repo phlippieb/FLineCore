@@ -17,11 +17,6 @@ final class StoreFactory {
 
 struct FirelineState: StateType {}
 
-let firelineReducer: Reducer<FirelineState> = _firelineReducer
-
-func _firelineReducer(
-    _ action: Action,
-    _ state: FirelineState?
-    ) -> FirelineState {
+let firelineReducer: Reducer<FirelineState> = { (action: Action, state: FirelineState?) in
     return state ?? FirelineState()
 }
