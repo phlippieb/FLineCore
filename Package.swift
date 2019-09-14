@@ -13,6 +13,11 @@ let package = Package(
     ],
     
     dependencies: [
+        // MARK: Common dependencies
+        .package(
+            url: "https://github.com/ReSwift/ReSwift.git",
+            from: "5.0.0"),
+        
         // MARK: Dependencies for testing
         .package(
             url: "https://github.com/Quick/Quick.git",
@@ -32,6 +37,7 @@ let package = Package(
             name: "FLineCoreTests",
             dependencies: [
                 "FLineCore",
+                "ReSwift",
                 "Quick",
                 "Nimble"
             ]),
