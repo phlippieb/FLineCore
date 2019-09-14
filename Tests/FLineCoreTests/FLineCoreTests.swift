@@ -31,28 +31,3 @@ final class StoreFactorySpec: QuickSpec {
         }
     }
 }
-
-// // // // // // //
-// Implementation //
-// // // // // // //
-
-import ReSwift
-
-final class StoreFactory {
-    func createStore() -> Store<FirelineState> {
-        return Store(
-            reducer: firelineReducer,
-            state: FirelineState())
-    }
-}
-
-struct FirelineState: StateType {}
-
-let firelineReducer: Reducer<FirelineState> = _firelineReducer
-
-func _firelineReducer(
-    _ action: Action,
-    _ state: FirelineState?
-    ) -> FirelineState {
-    return state ?? FirelineState()
-}
