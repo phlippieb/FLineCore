@@ -1,7 +1,8 @@
 import ReSwift
 
-final class StoreFactory {
-    func createStore() -> Store<FirelineState> {
+public final class StoreFactory {
+    public init() {}
+    public func createStore() -> Store<FirelineState> {
         return Store(
             reducer: firelineReducer,
             state: FirelineState())
@@ -20,12 +21,12 @@ let firelineReducer: Reducer<FirelineState> = { (action: Action, state: Fireline
     return state ?? FirelineState()
 }
 
-struct FirelineState: StateType {
+public struct FirelineState: StateType {
     init() {
         self.mainScene = .mainMenu
     }
     
-    let mainScene: MainSceneType
-    var didQuit = false
+    public let mainScene: MainSceneType
+    public var didQuit = false
 }
 

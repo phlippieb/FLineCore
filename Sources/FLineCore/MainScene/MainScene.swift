@@ -1,4 +1,4 @@
-enum MainSceneType {
+public enum MainSceneType {
     case mainMenu
     
 }

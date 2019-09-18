@@ -1,6 +1,6 @@
 import ReSwift
 
-enum MainMenuAction: Action {
+public enum MainMenuAction: Action {
     case quit
 }
 
