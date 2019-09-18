@@ -34,22 +34,19 @@ final class StoreFactorySpec: QuickSpec {
 
 final class Spec: QuickSpec {
     override func spec() {
-        describe("The main scene") {
-            context("of a new state") {
-                it("is the game menu") {
-                    expect(StoreFactory().createStore().state!.mainScene).to(equal(.mainMenu))
-                }
-                
-                // Which options are available in the menu?
-                // - quit
-                // - start/continue next level:
-                //   - if the player hasn't started playing yet, go to the first level
-                //   - if the player has started playing, continue from the beginning of the next uncompleted level
-                // - practice
-                //   - tutorial level
-                //   - sandbox simulation for writing and trying out scripts
-                
+        describe("The main scene of a new state") {
+            it("is the game menu") {
+                expect(StoreFactory().createStore().state!.mainScene).to(equal(.mainMenu))
             }
+            
+            // Which options are available in the menu?
+            // - quit
+            // - start/continue next level:
+            //   - if the player hasn't started playing yet, go to the first level
+            //   - if the player has started playing, continue from the beginning of the next uncompleted level
+            // - practice
+            //   - tutorial level
+            //   - sandbox simulation for writing and trying out scripts
         }
     }
 }
