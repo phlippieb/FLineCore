@@ -19,8 +19,8 @@ let firelineReducer: Reducer<FirelineState> = { (action: Action, state: Fireline
     var state = state ?? FirelineState()
     
     switch action {
-    case let gameMenuAction as GameMenuAction:
-        switch gameMenuAction {
+    case let mainMenuAction as MainMenuAction:
+        switch mainMenuAction {
         case .quit:
             state.didQuit = true
         }
@@ -46,7 +46,7 @@ enum MainSceneType {
     
 }
 
-enum GameMenuAction: Action {
+enum MainMenuAction: Action {
     case quit
 }
 

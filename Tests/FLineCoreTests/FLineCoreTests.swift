@@ -55,11 +55,11 @@ final class Spec: QuickSpec {
             context("when given a quit action") {
                 it("changes its state to indicate that it was quit") {
                     let store = StoreFactory().createStore()
-                    store.dispatch(GameMenuAction.quit)
+                    store.dispatch(MainMenuAction.quit)
                     expect(store.state!.didQuit).to(equal(true))
                 }
 
-                // TODO when we have more complex state, maybe we should enfore that the store ignores subsequent actions.
+                // TODO when we have more complex state, maybe we should enforce that the store ignores subsequent actions.
             }
         }
     }
