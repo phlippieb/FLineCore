@@ -39,7 +39,3 @@ enum MainSceneType {
     
 }
 
-enum MainMenuAction: Action {
-    case quit
-}
-
