@@ -9,20 +9,15 @@ final class StoreFactory {
 }
 
 let firelineReducer: Reducer<FirelineState> = { (action: Action, state: FirelineState?) in
-    var state = state ?? FirelineState()
-    
     switch action {
     case let mainMenuAction as MainMenuAction:
-        switch mainMenuAction {
-        case .quit:
-            state.didQuit = true
-        }
+        return mainMenuReducer(mainMenuAction, state)
 
     default:
         break
     }
 
-    return state
+    return state ?? FirelineState()
 }
 
 struct FirelineState: StateType {
