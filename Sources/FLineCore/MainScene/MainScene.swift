@@ -1,0 +1,5 @@
+enum MainSceneType {
+    case mainMenu
+    
+}
+

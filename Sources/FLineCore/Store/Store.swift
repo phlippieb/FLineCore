@@ -34,8 +34,3 @@ struct FirelineState: StateType {
     var didQuit = false
 }
 
-enum MainSceneType {
-    case mainMenu
-    
-}
-
