@@ -37,7 +37,7 @@ final class Spec: QuickSpec {
         describe("The main scene") {
             context("of a new state") {
                 it("is the game menu") {
-                    expect(StoreFactory().createStore().state!.mainScene).to(equal(.gameMenu))
+                    expect(StoreFactory().createStore().state!.mainScene).to(equal(.mainMenu))
                 }
                 
                 // Which options are available in the menu?

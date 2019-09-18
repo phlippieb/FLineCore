@@ -21,14 +21,14 @@ let firelineReducer: Reducer<FirelineState> = { (action: Action, state: Fireline
 
 struct FirelineState: StateType {
     init() {
-        self.mainScene = .gameMenu
+        self.mainScene = .mainMenu
     }
     
     let mainScene: MainSceneType
 }
 
 enum MainSceneType {
-    case gameMenu
+    case mainMenu
     
 }
 
