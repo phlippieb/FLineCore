@@ -1,10 +1,3 @@
-//
-//  Store.swift
-//  FLineCore
-//
-//  Created by Phlippie Bosman on 2019/09/14.
-//
-
 import ReSwift
 
 final class StoreFactory {
