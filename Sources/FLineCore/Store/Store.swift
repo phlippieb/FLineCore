@@ -16,7 +16,20 @@ final class StoreFactory {
 }
 
 let firelineReducer: Reducer<FirelineState> = { (action: Action, state: FirelineState?) in
-    return state ?? FirelineState()
+    var state = state ?? FirelineState()
+    
+    switch action {
+    case let gameMenuAction as GameMenuAction:
+        switch gameMenuAction {
+        case .quit:
+            state.didQuit = true
+        }
+
+    default:
+        break
+    }
+
+    return state
 }
 
 struct FirelineState: StateType {
@@ -25,6 +38,7 @@ struct FirelineState: StateType {
     }
     
     let mainScene: MainSceneType
+    var didQuit = false
 }
 
 enum MainSceneType {
@@ -32,8 +46,7 @@ enum MainSceneType {
     
 }
 
-enum GameMenuAction {
-    case play
-    case practice
+enum GameMenuAction: Action {
     case quit
 }
+

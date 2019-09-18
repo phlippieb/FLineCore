@@ -38,6 +38,10 @@ final class Spec: QuickSpec {
             it("is the game menu") {
                 expect(StoreFactory().createStore().state!.mainScene).to(equal(.mainMenu))
             }
+
+            it("does not say that the game was quit") {
+                expect(StoreFactory().createStore().state!.didQuit).to(equal(false))
+            }
             
             // Which options are available in the menu?
             // - quit
@@ -47,6 +51,16 @@ final class Spec: QuickSpec {
             // - practice
             //   - tutorial level
             //   - sandbox simulation for writing and trying out scripts
+
+            context("when given a quit action") {
+                it("changes its state to indicate that it was quit") {
+                    let store = StoreFactory().createStore()
+                    store.dispatch(GameMenuAction.quit)
+                    expect(store.state!.didQuit).to(equal(true))
+                }
+
+                // TODO when we have more complex state, maybe we should enfore that the store ignores subsequent actions.
+            }
         }
     }
 }
