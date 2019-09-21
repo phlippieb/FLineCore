@@ -14,6 +14,9 @@ let firelineReducer: Reducer<FirelineState> = { (action: Action, state: Fireline
     case let mainMenuAction as MainMenuAction:
         return mainMenuReducer(mainMenuAction, state)
 
+    case let playingAction as PlayingAction:
+        return playingReducer(playingAction, state)
+
     default:
         break
     }

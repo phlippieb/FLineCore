@@ -77,7 +77,26 @@ final class LevelSpec: QuickSpec {
                         guard case .playing(let playingState) = store.state!.mainScene
                             else { return .failed(reason: "Wrong enum case") }
 
-                            expect(playingState.tick).to(equal(0))
+                        expect(playingState.tick).to(equal(0))
+
+                        return .succeeded
+                    }).to(succeed())
+                }
+            }
+        }
+
+        describe("A playing state") {
+            context("when a tick action is dispatched") {
+                it("Increments the tick") {
+                    let store = StoreFactory().createStore()
+                    store.dispatch(MainMenuAction.play)
+                    store.dispatch(PlayingAction.tick)
+
+                    expect({
+                        guard case .playing(let playingState) = store.state!.mainScene
+                            else { return .failed(reason: "Wrong enum case") }
+                        
+                        expect(playingState.tick).to(equal(1))
 
                         return .succeeded
                     }).to(succeed())
