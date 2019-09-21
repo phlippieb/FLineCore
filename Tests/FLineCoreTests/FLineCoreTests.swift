@@ -32,7 +32,7 @@ final class StoreFactorySpec: QuickSpec {
     }
 }
 
-final class Spec: QuickSpec {
+final class MainMenuSpec: QuickSpec {
     override func spec() {
         describe("The main scene of a new state") {
             it("is the game menu") {
@@ -64,3 +64,26 @@ final class Spec: QuickSpec {
         }
     }
 }
+
+final class LevelSpec: QuickSpec {
+    override func spec() {
+        describe("The main menu") {
+            context("when choosing to play") {
+               it("goes to the playing scene, with the playing state at tick zero") {
+                    let store = StoreFactory().createStore()
+                    store.dispatch(MainMenuAction.play)
+                    
+                    expect({
+                        guard case .playing(let playingState) = store.state!.mainScene
+                            else { return .failed(reason: "Wrong enum case") }
+
+                            expect(playingState.tick).to(equal(0))
+
+                        return .succeeded
+                    }).to(succeed())
+                }
+            }
+        }
+    }
+}
+

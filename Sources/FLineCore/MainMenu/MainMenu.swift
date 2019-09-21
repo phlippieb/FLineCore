@@ -2,6 +2,7 @@ import ReSwift
 
 public enum MainMenuAction: Action {
     case quit
+    case play
 }
 
 let mainMenuReducer: Reducer<FirelineState> = { (action: Action, state: FirelineState?) -> FirelineState in
@@ -13,6 +14,9 @@ let mainMenuReducer: Reducer<FirelineState> = { (action: Action, state: Fireline
     switch mainMenuAction {
     case .quit:
         state.didQuit = true
+
+    case .play:
+        state.mainScene = .playing(PlayingState())
     }
         
     return state

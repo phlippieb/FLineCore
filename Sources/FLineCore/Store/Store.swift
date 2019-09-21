@@ -26,7 +26,7 @@ public struct FirelineState: StateType {
         self.mainScene = .mainMenu
     }
     
-    public let mainScene: MainSceneType
+    public var mainScene: MainSceneType
     public var didQuit = false
 }
 
