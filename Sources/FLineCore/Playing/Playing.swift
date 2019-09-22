@@ -11,16 +11,14 @@ public enum PlayingAction: Action {
 let playingReducer: Reducer<FirelineState> = { (action: Action, state: FirelineState?) -> FirelineState in
    var state = state ?? FirelineState()
 
-    guard let playingAction = action as? PlayingAction,
-        case .playing(var playingState) = state.mainScene
+    guard let playingAction = action as? PlayingAction
         else { return state }
 
     switch playingAction {
     case .tick:
-        playingState.tick += 1
+        state.mainScene.playingState?.tick += 1
     }
 
-    state.mainScene = .playing(playingState)
     return state
 }
 
