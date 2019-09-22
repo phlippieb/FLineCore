@@ -81,8 +81,12 @@ final class LevelSpec: QuickSpec {
             let store = StoreFactory().createStore()
             store.dispatch(MainMenuAction.play)
 
-            it("has a player") {
-                expect(store.state?.mainScene.playingState?.player).toNot(beNil())
+            context("the player") {
+                it("starts at the zero coordinates") {
+                    let expected = Location(x: 0, y: 0)
+                    let actual = store.state?.mainScene.playingState?.player.navigation.location
+                    expect(actual).to(equal(expected))
+                }
             }
         }
     }
