@@ -87,6 +87,12 @@ final class LevelSpec: QuickSpec {
                     let actual = store.state?.mainScene.playingState?.player.navigation.location
                     expect(actual).to(equal(expected))
                 }
+
+                it("starts with a bearing of north") {
+                    let expected = Bearing(degrees: 0)
+                    let actual = store.state?.mainScene.playingState?.player.navigation.bearing
+                    expect(actual).to(equal(expected))
+                }
             }
         }
     }
