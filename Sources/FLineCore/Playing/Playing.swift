@@ -7,6 +7,7 @@ public struct PlayingState: Equatable {
 
 public enum PlayingAction: Action {
     case tick
+    case setCourse(to: Location)
 }
 
 let playingReducer: Reducer<FirelineState> = { (action: Action, state: FirelineState?) -> FirelineState in
@@ -18,6 +19,9 @@ let playingReducer: Reducer<FirelineState> = { (action: Action, state: FirelineS
     switch playingAction {
     case .tick:
         state.mainScene.playingState?.tick += 1
+
+    case .setCourse(let targetLocation):
+        break
     }
 
     return state

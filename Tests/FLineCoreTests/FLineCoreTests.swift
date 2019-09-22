@@ -95,6 +95,15 @@ final class LevelSpec: QuickSpec {
                 }
             }
         }
+
+        describe("The player's navigation") {
+            let store = StoreFactory().createStore()
+
+            context("when given a navigation action") {
+                let targetLocation = Location(x: 10, y: 10)
+                store.dispatch(PlayingAction.setCourse(to: targetLocation))
+            }
+        }
     }
  }
 
