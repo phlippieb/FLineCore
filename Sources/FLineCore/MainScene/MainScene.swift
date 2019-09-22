@@ -11,8 +11,7 @@ public enum MainSceneType: Equatable {
         get {
             guard case let .playing(value) = self else { return nil }
             return value
-        }
-        set {
+        } set {
             guard case .playing = self, let newValue = newValue else { return }
             self = .playing(newValue)
         }
