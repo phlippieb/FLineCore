@@ -76,6 +76,15 @@ final class LevelSpec: QuickSpec {
                 }
             }
         }
+
+        describe("A new playing state") {
+            let store = StoreFactory().createStore()
+            store.dispatch(MainMenuAction.play)
+
+            it("has a player") {
+                expect(store.state?.mainScene.playingState?.player).toNot(beNil())
+            }
+        }
     }
-}
+ }
 

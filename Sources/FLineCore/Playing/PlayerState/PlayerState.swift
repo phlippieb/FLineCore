@@ -1,0 +1,2 @@
+public struct PlayerState: Equatable {
+}

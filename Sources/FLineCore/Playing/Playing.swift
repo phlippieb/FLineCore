@@ -2,6 +2,7 @@ import ReSwift
 
 public struct PlayingState: Equatable {
     var tick: Int = 0
+    var player = PlayerState()
 }
 
 public enum PlayingAction: Action {
