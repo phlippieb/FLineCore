@@ -27,29 +27,20 @@ final class MainMenuSpec: QuickSpec {
         describe("The main scene of a new state") {
             it("is the game menu") {
                 expect(StoreFactory().createStore().state!.mainScene).to(equal(.mainMenu))
+                expect(StoreFactory().createStore().state?.mainScene.mainMenu).toNot(beNil())
+                expect(StoreFactory().createStore().state?.mainScene.playingState).to(beNil())
             }
 
             it("does not say that the game was quit") {
                 expect(StoreFactory().createStore().state!.didQuit).to(equal(false))
             }
             
-            // Which options are available in the menu?
-            // - quit
-            // - start/continue next level:
-            //   - if the player hasn't started playing yet, go to the first level
-            //   - if the player has started playing, continue from the beginning of the next uncompleted level
-            // - practice
-            //   - tutorial level
-            //   - sandbox simulation for writing and trying out scripts
-
             context("when given a quit action") {
                 it("changes its state to indicate that it was quit") {
                     let store = StoreFactory().createStore()
                     store.dispatch(MainMenuAction.quit)
                     expect(store.state!.didQuit).to(equal(true))
                 }
-
-                // TODO when we have more complex state, maybe we should enforce that the store ignores subsequent actions.
             }
         }
     }
@@ -63,15 +54,11 @@ final class LevelSpec: QuickSpec {
                     let store = StoreFactory().createStore()
                     store.dispatch(MainMenuAction.play)
                     
-                    expect({
-                        guard case .playing(let playingState) = store.state!.mainScene
-                            else { return .failed(reason: "Wrong enum case") }
+                    expect(store.state?.mainScene.playingState).toNot(beNil())
+                    expect(store.state?.mainScene.playingState?.tick).to(equal(0))
 
-                        expect(playingState.tick).to(equal(0))
-
-                        return .succeeded
-                    }).to(succeed())
-                }
+                    expect(store.state?.mainScene.mainMenu).to(beNil())
+               }
             }
         }
 
@@ -80,16 +67,12 @@ final class LevelSpec: QuickSpec {
                 it("Increments the tick") {
                     let store = StoreFactory().createStore()
                     store.dispatch(MainMenuAction.play)
+                    
                     store.dispatch(PlayingAction.tick)
+                    expect(store.state?.mainScene.playingState?.tick).to(equal(1))
 
-                    expect({
-                        guard case .playing(let playingState) = store.state!.mainScene
-                            else { return .failed(reason: "Wrong enum case") }
-                        
-                        expect(playingState.tick).to(equal(1))
-
-                        return .succeeded
-                    }).to(succeed())
+                    store.dispatch(PlayingAction.tick)
+                    expect(store.state?.mainScene.playingState?.tick).to(equal(2))
                 }
             }
         }
