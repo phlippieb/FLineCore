@@ -1,4 +1,7 @@
 while [ 1 ]; do
+   # Prompt
+   echo "\nReady"
+
    # Wait
    read
 
