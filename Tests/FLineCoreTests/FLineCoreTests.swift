@@ -98,10 +98,15 @@ final class LevelSpec: QuickSpec {
 
         describe("The player's navigation") {
             let store = StoreFactory().createStore()
+            store.dispatch(MainMenuAction.play)
 
             context("when given a navigation action") {
                 let targetLocation = Location(x: 10, y: 10)
                 store.dispatch(PlayingAction.setCourse(to: targetLocation))
+
+                it("sets course for the target location") {
+                    expect(store.state?.mainScene.playingState?.player.navigation.targetLocation).to(equal(targetLocation))
+                }
             }
         }
     }

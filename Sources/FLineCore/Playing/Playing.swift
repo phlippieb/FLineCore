@@ -21,7 +21,8 @@ let playingReducer: Reducer<FirelineState> = { (action: Action, state: FirelineS
         state.mainScene.playingState?.tick += 1
 
     case .setCourse(let targetLocation):
-        break
+      print("--- setting course for \(targetLocation)")
+      state.mainScene.playingState?.player.navigation.targetLocation = targetLocation
     }
 
     return state
