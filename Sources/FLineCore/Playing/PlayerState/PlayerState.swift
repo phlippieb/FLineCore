@@ -5,6 +5,7 @@ public struct PlayerState: Equatable {
 public struct Navigation: Equatable {
    public var location = Location(x: 0, y: 0)
    public var bearing = Bearing(degrees: 0)
+   public var speed: Float = 0
 
    /// Where the player is headed. Nil if not navigating.
    public var targetLocation: Location?

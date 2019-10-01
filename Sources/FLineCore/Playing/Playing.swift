@@ -19,9 +19,9 @@ let playingReducer: Reducer<FirelineState> = { (action: Action, state: FirelineS
     switch playingAction {
     case .tick:
         state.mainScene.playingState?.tick += 1
+        state.mainScene.playingState?.player.navigation.speed = 1
 
     case .setCourse(let targetLocation):
-      print("--- setting course for \(targetLocation)")
       state.mainScene.playingState?.player.navigation.targetLocation = targetLocation
     }
 

@@ -93,6 +93,12 @@ final class LevelSpec: QuickSpec {
                     let actual = store.state?.mainScene.playingState?.player.navigation.bearing
                     expect(actual).to(equal(expected))
                 }
+
+                it("starts with a zero speed") {
+                    let expected = Float(0)
+                    let actual = store.state?.mainScene.playingState?.player.navigation.speed
+                    expect(actual).to(equal(expected))
+                }
             }
         }
 
@@ -100,12 +106,21 @@ final class LevelSpec: QuickSpec {
             let store = StoreFactory().createStore()
             store.dispatch(MainMenuAction.play)
 
-            context("when given a navigation action") {
-                let targetLocation = Location(x: 10, y: 10)
+            context("with course set for a location that is straight ahead") {
+                let targetLocation = Location(x: 0, y: -1000)
                 store.dispatch(PlayingAction.setCourse(to: targetLocation))
 
-                it("sets course for the target location") {
+                it("updates the player state with the target location") {
                     expect(store.state?.mainScene.playingState?.player.navigation.targetLocation).to(equal(targetLocation))
+                }
+
+                it("does not accelrate immediately") {
+                    expect(store.state?.mainScene.playingState?.player.navigation.speed).to(equal(0))
+                }
+
+                it("accelerates after a tick") {
+                    store.dispatch(PlayingAction.tick)
+                    expect(store.state?.mainScene.playingState?.player.navigation.speed).to(beGreaterThan(0))
                 }
             }
         }
